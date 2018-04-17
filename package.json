@@ -1,0 +1,24 @@
+{
+  "name": "fb-photos",
+  "version": "1.0.0",
+  "description": "git yer dang ol pitchures",
+  "main": "index.js",
+  "dependencies": {
+    "inquirer": "^5.2.0",
+    "puppeteer": "^1.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spieglt/fb-photos.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/spieglt/fb-photos/issues"
+  },
+  "homepage": "https://github.com/spieglt/fb-photos#readme"
+}

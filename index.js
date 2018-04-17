@@ -85,10 +85,10 @@ async function scrollThroughPhotos(direction) {
     // try catch for video links
     try {
       await page.hover('div.stageWrapper');
-      if (direction === 'forward') {
+      if (direction === 'backward') {
         await clickNextButton();
       }
-      if (direction === 'backward') {
+      if (direction === 'forward') {
         await clickPrevButton();
       }
       // await page.waitForNavigation();
