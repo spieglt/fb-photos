@@ -1,6 +1,6 @@
 # Description
 
-This tool downloads all photos you're tagged in on Facebook. You will be prompted for your username, password, and whether you want to start from the most recent photos (backward) or the oldest (forward). A Chrome window will then open to Facebook, log you in, navigate to Photos of You, and start downloading. Because it uses a fresh Chrome instance, it will save the pictures to your default Downloads directory (`C:\Users\You\Downloads` or `~/Downloads`), though you can change this during the transfer in Chrome's settings. It does not handle videos.
+This tool downloads all photos you're tagged in on Facebook. You will be prompted for your username and password. A Chrome window will then open to Facebook, log you in, navigate to Photos of You, and start downloading. Because it uses a fresh Chrome instance, it will save the pictures to your default Downloads directory (`C:\Users\You\Downloads` or `~/Downloads`), though you can change this during the transfer in Chrome's settings. It does not handle videos.
 
 # Setup and Use
 
