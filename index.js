@@ -18,7 +18,7 @@ async function main() {
 
   await page.$eval('input[id=email]', (el, user) => el.value = user, answers.username);
   await page.$eval('input[id=pass]', (el, pass) => el.value = pass, answers.password);
-  await page.$eval('input[value="Log In"]', button => button.click());
+  await page.$eval('button[name=login]', button => button.click());
   await goToPhotos();
 
   await scrollThroughPhotos(answers.direction);
@@ -29,8 +29,10 @@ async function goToPhotos() {
   let profile = await page.evaluate(() => {
     return window.location.pathname;
   });
-  await page.goto('https://facebook.com' + profile + '/photos_of');
-  await page.$eval('div.tagWrapper', tile => tile.click());
+  await page.goto('https://facebook.com' + profile + 'photos_of');
+  await page.evaluate('window.scrollBy(0, 500)');
+  await page.waitForSelector('a[href*="facebook.com/photo.php"]');
+  await page.$eval('a[href*="facebook.com/photo.php"]', photo => photo.click());
 }
 
 async function doAfter(milliseconds, func) {
@@ -52,28 +54,24 @@ async function getUrl() {
   return url;
 }
 
-async function clickPrevButton() {
-await page.evaluate(() => {
-    document.querySelector('a.snowliftPager.prev').click();
-  });
-}
-
 async function clickNextButton() {
-await page.evaluate(() => {
-    document.querySelector('a.snowliftPager.next').click();
+  await page.waitForSelector('div[aria-label="Next photo"]');
+  await page.evaluate(() => {
+    document.querySelector('div[aria-label="Next photo"]').click();
   });
 }
 
 async function clickOptionsButton() {
+  await page.waitForSelector('div[aria-label="Actions for this post"]');
   await page.evaluate(() => {
-    document.querySelector('a[data-action-type="open_options_flyout"]').click();
+    document.querySelector('div[aria-label="Actions for this post"]').click();
   });
 }
 
 async function clickDownloadButton() {
+  await page.waitForSelector('a[download]');
   await page.evaluate(() => {
-    var list = document.querySelectorAll('a[data-action-type="download_photo"]');
-    list[list.length - 1].click();
+    var list = document.querySelector('a[download]').click();
   });
 }
 
@@ -84,14 +82,7 @@ async function scrollThroughPhotos(direction) {
   for (let i = 0; true; i++) {
     // try catch for video links
     try {
-      await page.hover('div.stageWrapper');
-      if (direction === 'backward') {
-        await clickNextButton();
-      }
-      if (direction === 'forward') {
-        await clickPrevButton();
-      }
-      // await page.waitForNavigation();
+      await clickNextButton();
       await clickOptionsButton();
       await clickDownloadButton();
     } catch(err) {

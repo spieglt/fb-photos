@@ -13,15 +13,6 @@ var questions = [
       name: 'password',
       mask: '*'
     },
-    {
-      type: 'list',
-      message: 'Which direction would you like to go?',
-      name: 'direction',
-      choices: [
-        'forward',
-        'backward'
-      ]
-    }
 ];
 
 async function prompt() {
