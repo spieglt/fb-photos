@@ -6,7 +6,7 @@ This tool downloads all photos you're tagged in on Facebook. You will be prompte
 
 - Install Node.js/NPM: https://nodejs.org/en/download/
 - Download or clone this repo (then unzip to a folder if downloading: https://github.com/spieglt/fb-photos/archive/master.zip)
-- Open your terminal or command prompt or Powershell and navigate to the fb-delete folder
+- Open your terminal or command prompt or Powershell and navigate to the fb-photos folder
 - Run `npm install` to install dependencies, wait for it to finish
 - Run `node ./index.js`, follow the prompts, and press `Enter`
 - When the Chrome window appears, click `Allow` or `Block` to the prompt for Facebook to send you notifications, and then click `Allow` when prompted to let Chrome download multiple files.
